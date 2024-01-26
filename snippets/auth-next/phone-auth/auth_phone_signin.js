@@ -20,5 +20,13 @@ signInWithPhoneNumber(auth, phoneNumber, appVerifier)
     }).catch((error) => {
       // Error; SMS not sent
       // ...
+
+      grecaptcha.reset(window.recaptchaWidgetId);
+
+      // Or, if you haven't stored the widget ID:
+      window.recaptchaVerifier.render().then(function(widgetId){
+        grecaptcha.reset(widgetId);
+      });
+
     });
 // [END auth_phone_signin_modular]

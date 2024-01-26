@@ -14,4 +14,7 @@ confirmationResult.confirm(code).then((result) => {
   // User couldn't sign in (bad verification code?)
   // ...
 });
+
+var credential = firebase.auth.PhoneAuthProvider.credential(confirmationResult.verificationId, code);
+firebase.auth().signInWithCredential(credential);
 // [END auth_phone_verify_code_modular]
